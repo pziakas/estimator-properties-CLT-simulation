@@ -39,6 +39,6 @@ The study evaluates whether each estimator satisfies these properties. The imple
 Monte Carlo simulations confirm theoretical expectations:
 
 - The sample mean is unbiased and consistent.
-- The variance estimator using 1/n is biased.
-- The 1/(n-1) corrected variance estimator is unbiased.
+- The variance estimator using $\frac{1}{n}$ is biased.
+- The $\frac{1}{n-1}$ corrected variance estimator is unbiased.
 - Empirical variance decreases with increasing sample size, illustrating consistency.
