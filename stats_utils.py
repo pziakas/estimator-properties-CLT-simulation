@@ -133,10 +133,7 @@ def get_full_plot(arr,sample_size,estim,xtitle,title,nbins,n_iter):
     It plots the distribution of the estimator, using n_iter samples of sample_size.
     """
 
-    try:
-        values = get_distr(arr,sample_size,estim,n_iter)
+    values = get_distr(arr,sample_size,estim,n_iter)
 
-        plot(values,xtitle,title,nbins)
+    plot(values,xtitle,title,nbins)
     
-    except (ValueError,ZeroDivisionError) as e:
-        print(f"ERROR: {e}")
