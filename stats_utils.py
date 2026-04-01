@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def mean_estim(arr):
+def mean_estim(arr: np.ndarray) -> float:
     
     """
     This function accepts as an argument a Numpy array.
@@ -17,7 +17,7 @@ def mean_estim(arr):
     
     return sum/len(arr)
 
-def variance_estim(arr, mode):
+def variance_estim(arr: np.ndarray, mode: int) -> float:
 
     """
     This function accepts as arguments a Numpy array and an integer for the mode.
@@ -47,7 +47,7 @@ def variance_estim(arr, mode):
 
     return mode_to_val[mode]
 
-def get_rand(arr,sample_size):
+def get_rand(arr: np.ndarray, sample_size: int) -> np.ndarray:
 
     """
     This function accepts as an arguments a Numpy array and an interger for the sample size.
@@ -63,7 +63,7 @@ def get_rand(arr,sample_size):
 
     return sample
 
-def plot(arr,xtitle,title,nbins):
+def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
 
     """
     This function accepts as an arguments a Numpy array, an integer for the number of bins
@@ -85,7 +85,7 @@ def plot(arr,xtitle,title,nbins):
     print(f"The standard deviation of the distribution is: {np.std(arr)}")
 
 
-def get_distr(arr,sample_size,estim,n_iter):
+def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.ndarray:
 
     """
     This function accepts as an arguments a Numpy array, an integer for the sample size and 
@@ -125,7 +125,7 @@ def get_distr(arr,sample_size,estim,n_iter):
 
     return estim_val
 
-def get_full_plot(arr,sample_size,estim,xtitle,title,nbins,n_iter):
+def get_full_plot(arr: np.ndarray, sample_size: int, estim: str, xtitle: str, title: str, nbins: int, n_iter: int) -> None:
 
     """
     This function accepts assembles all the previously defined functions together.
