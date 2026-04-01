@@ -26,7 +26,6 @@ def variance_estim(arr: np.ndarray, mode: int) -> float:
     """
 
     mean = mean_estim(arr)
-    sum = 0.0
 
     if len(arr) == 0:
         raise ZeroDivisionError("Your sample has zero size! Check your array definitions!")
@@ -34,8 +33,7 @@ def variance_estim(arr: np.ndarray, mode: int) -> float:
     if mode == 2 and len(arr) == 1:
         raise ZeroDivisionError("You are going to divide with zero! Check your array definitions!")
 
-    for i in range(len(arr)):
-        sum += (arr[i] - mean)**2
+    sum = np.sum((arr - mean)**2)
 
     mode_to_val = {
         1: sum/(len(arr)),
