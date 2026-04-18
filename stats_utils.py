@@ -13,37 +13,29 @@ def mean_estim(arr: np.ndarray) -> float:
     if len(arr) == 0:
         raise ZeroDivisionError("Your sample has zero size! Check your array definitions!")
     
-    sum = np.sum(arr)
+    elem_sum = np.sum(arr)
     
-    return sum/len(arr)
+    return elem_sum/len(arr)
 
-def variance_estim(arr: np.ndarray, mode: int) -> float:
+def variance_estim(arr: np.ndarray, bias: bool) -> float:
 
     """
-    This function accepts as arguments a Numpy array and an integer for the mode.
+    This function accepts as arguments a Numpy array and a boolean to choose the variance formula.
 
-    It calculates the sample variance depending on the mode inserted and returns its value.
+    It calculates the sample variance depending on the boolean inserted and returns its value.
     """
-
-    mean = mean_estim(arr)
 
     if len(arr) == 0:
         raise ZeroDivisionError("Your sample has zero size! Check your array definitions!")
+
+    mean = mean_estim(arr)
     
-    if mode == 2 and len(arr) == 1:
+    if (not bias) and len(arr) == 1:
         raise ZeroDivisionError("You are going to divide with zero! Check your array definitions!")
 
-    sum = np.sum((arr - mean)**2)
+    elem_sum = np.sum((arr - mean)**2)
 
-    mode_to_val = {
-        1: sum/(len(arr)),
-        2: sum/(len(arr)-1)
-    }
-    
-    if mode not in mode_to_val:
-        raise ValueError("The mode you have inserted is invalid!")
-
-    return mode_to_val[mode]
+    return elem_sum/(len(arr)) if bias else elem_sum/(len(arr)-1)
 
 def get_rand(arr: np.ndarray, sample_size: int) -> np.ndarray:
 
@@ -78,6 +70,7 @@ def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
     plt.xlabel(xtitle)
     plt.ylabel("Counts")
     plt.title(title)
+    plt.show()
 
     print(f"The mean value of the distribution is: {np.mean(arr)}")
     print(f"The standard deviation of the distribution is: {np.std(arr)}")
@@ -107,8 +100,8 @@ def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.
 
     str_to_func = {
         "mean": mean_estim,
-        "var": lambda sample: variance_estim(sample,1),
-        "star_var": lambda sample: variance_estim(sample,2)
+        "var": lambda sample: variance_estim(sample,True),
+        "star_var": lambda sample: variance_estim(sample,False)
     } 
 
     if estim not in str_to_func:
