@@ -13,9 +13,7 @@ def mean_estim(arr: np.ndarray) -> float:
     if len(arr) == 0:
         raise ZeroDivisionError("Your sample has zero size! Check your array definitions!")
     
-    elem_sum = np.sum(arr)
-    
-    return elem_sum/len(arr)
+    return np.mean(arr)
 
 def variance_estim(arr: np.ndarray, bias: bool) -> float:
 
@@ -28,7 +26,7 @@ def variance_estim(arr: np.ndarray, bias: bool) -> float:
     if len(arr) == 0:
         raise ZeroDivisionError("Your sample has zero size! Check your array definitions!")
 
-    mean = mean_estim(arr)
+    mean = np.mean(arr)
     
     if (not bias) and len(arr) == 1:
         raise ZeroDivisionError("You are going to divide with zero! Check your array definitions!")
@@ -111,10 +109,8 @@ def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.
         sample = get_rand(arr,sample_size)
         val = str_to_func[estim](sample)
         values.append(val)
-    
-    estim_val = np.array(values)
 
-    return estim_val
+    return np.array(values)
 
 def get_full_plot(arr: np.ndarray, sample_size: int, estim: str, xtitle: str, title: str, nbins: int, n_iter: int) -> None:
 
