@@ -86,13 +86,13 @@ def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.
 
     values = []
 
-    print(f"Requested a sample of {sample_size} numbers!")
-
     if sample_size <= 0:
         raise ValueError("The option you inserted for the sample size is invalid!")
 
     if n_iter <= 0:
         raise ValueError("The number of iterations you have inserted is invalid!")
+
+    print(f"Requested a sample of {sample_size} numbers!")
     
     print(f"Requested {n_iter} iterations!")
 
