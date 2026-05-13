@@ -51,6 +51,11 @@ def get_rand(arr: np.ndarray, sample_size: int) -> np.ndarray:
 
     return sample
 
+def print_mean_std(arr: np.ndarray) -> None:
+
+    print(f"The mean value of the distribution is: {np.mean(arr)}")
+    print(f"The standard deviation of the distribution is: {np.std(arr)}")
+
 def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
 
     """
@@ -70,8 +75,7 @@ def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
     plt.title(title)
     plt.show()
 
-    print(f"The mean value of the distribution is: {np.mean(arr)}")
-    print(f"The standard deviation of the distribution is: {np.std(arr)}")
+    print_mean_std(arr)
 
 
 def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.ndarray:
