@@ -75,8 +75,6 @@ def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
     plt.title(title)
     plt.show()
 
-    print_mean_std(arr)
-
 
 def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.ndarray:
 
@@ -127,4 +125,6 @@ def get_full_plot(arr: np.ndarray, sample_size: int, estim: str, xtitle: str, ti
     values = get_distr(arr,sample_size,estim,n_iter)
 
     plot(values,xtitle,title,nbins)
+
+    print_mean_std(values)
     
