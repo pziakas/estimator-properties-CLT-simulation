@@ -53,6 +53,12 @@ def get_rand(arr: np.ndarray, sample_size: int) -> np.ndarray:
 
 def print_mean_std(arr: np.ndarray) -> None:
 
+    """
+    This function accepts a Numpy array as an argument.
+
+    It prints its mean value and standard deviation.
+    """
+
     print(f"The mean value of the distribution is: {np.mean(arr)}")
     print(f"The standard deviation of the distribution is: {np.std(arr)}")
 
