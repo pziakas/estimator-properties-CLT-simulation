@@ -5,9 +5,17 @@ import numpy as np
 def mean_estim(arr: np.ndarray) -> float:
     
     """
-    This function accepts as an argument a Numpy array.
+    Calculates the sample mean estimator.
 
-    It calculates the sample mean and returns its value.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
+
+    Returns
+    -------
+    float
+        Sample mean estimator
     """
 
     if len(arr) == 0:
@@ -18,9 +26,20 @@ def mean_estim(arr: np.ndarray) -> float:
 def variance_estim(arr: np.ndarray, bias: bool) -> float:
 
     """
-    This function accepts as arguments a Numpy array and a boolean to choose the variance formula.
+    Calculates the sample variance estimator for the biased and unbiased case.
 
-    It calculates the sample variance depending on the boolean inserted and returns its value.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
+    
+    bias: bool
+        A boolean associated to the bias 
+
+    Returns
+    -------
+    float
+        Variance estimator based on bias
     """
 
     if len(arr) == 0:
@@ -38,10 +57,20 @@ def variance_estim(arr: np.ndarray, bias: bool) -> float:
 def get_rand(arr: np.ndarray, sample_size: int) -> np.ndarray:
 
     """
-    This function accepts as an arguments a Numpy array and an interger for the sample size.
+    Collects a random sample of defined size from an already defined sample.
 
-    It collects sample_size random numbers from the array and returns a new Numpy array that 
-    contains them.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
+    
+    sample_size: int
+        The size of the drawn sample
+
+    Returns
+    -------
+    np.ndarray
+        Drawn sample of defined size
     """
 
     if sample_size <= 0:
@@ -54,9 +83,12 @@ def get_rand(arr: np.ndarray, sample_size: int) -> np.ndarray:
 def print_mean_std(arr: np.ndarray) -> None:
 
     """
-    This function accepts a Numpy array as an argument.
+    Print the mean value and the standard deviation of the sample.
 
-    It prints its mean value and standard deviation.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
     """
 
     print(f"The mean value of the distribution is: {np.mean(arr)}")
@@ -65,31 +97,60 @@ def print_mean_std(arr: np.ndarray) -> None:
 def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
 
     """
-    This function accepts as an arguments a Numpy array, an integer for the number of bins
-    and two strings for the title and the X axis title.
+    Plots the distribution of the sample.
 
-    It plots the histogram according to the Numpy array that is inserted. It also prints the
-    mean value and the standard deviation of the distribution.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
+    
+    xtitle: str
+        The X axis title
+    
+    title: str
+        The figure title
+    
+    nbins: int
+        The number of bins
     """
 
     if nbins <= 0:
         raise ValueError("The number of bins you have inserted is invalid!")
     
-    plt.hist(arr,nbins,histtype='step')
+    plt.hist(arr,nbins,histtype='step',color="darkred",linewidth=2,label="Distribution")
+    plt.legend()
+    plt.grid(True, alpha=0.3)
     plt.xlabel(xtitle)
     plt.ylabel("Counts")
     plt.title(title)
+    plt.tight_layout()
     plt.show()
 
 
 def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.ndarray:
 
     """
-    This function accepts as an arguments a Numpy array, an integer for the sample size and 
-    and the number of iterations and one string for the name of the estimator.
+    Collects a number of random samples of defined size from an already defined sample and
+    calculates the value of a given estimator for each one.
 
-    It gets n_iter samples of sample_size and calculates the value of the designated estimator
-    for each sample. It returns the values of the estimaor as a Numpy array.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
+    
+    sample_size: int
+        The size of the drawn sample
+
+    est: str
+        The estimator that will be calulated
+    
+    n_iter: int
+        Number of random samples to be drawn
+    
+    Returns
+    -------
+    np.ndarray
+        The array with the estimator values
     """
 
     values = []
@@ -123,9 +184,31 @@ def get_distr(arr: np.ndarray, sample_size: int, estim: str, n_iter: int) -> np.
 def get_full_plot(arr: np.ndarray, sample_size: int, estim: str, xtitle: str, title: str, nbins: int, n_iter: int) -> None:
 
     """
-    This function accepts assembles all the previously defined functions together.
+    Plots the distribution of a given estimaror using randomly drawn samples of defined size 
+    from an already defined sample.
 
-    It plots the distribution of the estimator, using n_iter samples of sample_size.
+    Parameters
+    ----------
+    arr: np.ndarray
+        The sample values array
+
+    sample_size: int
+        The size of the randomly drawn sample
+
+    estim: str
+        The estimator that will be plotted
+    
+    xtitle: str
+        The X axis title
+    
+    title: str
+        The figure title
+    
+    nbins: int
+        The number of bins
+    
+    n_iter: int
+        The number of random samples that will be drawn
     """
 
     values = get_distr(arr,sample_size,estim,n_iter)
