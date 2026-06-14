@@ -62,6 +62,23 @@ Key points that are validated:
 - Matplotlib
 - Jupyter Notebooks
 
+## Usage
+
+## Usage
+
+To run this project, the user needs to clone the repository and install the required libraries using the following command:
+
+```bash
+pip install numpy matplotlib jupyter 
+```
+
+Then, they can run the `estimators.ipynb` and `CLT.ipynb` notebooks with the following command:
+
+```bash
+jupyter notebook estimators.ipynb
+jupyter notebook CLT.ipynb
+```
+
 ## Statistical Properties of Estimators - Key results
 
 Monte Carlo simulations confirm theoretical expectations:
