@@ -64,8 +64,6 @@ Key points that are validated:
 
 ## Usage
 
-## Usage
-
 To run this project, the user needs to clone the repository and install the required libraries using the following command:
 
 ```bash
