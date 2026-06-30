@@ -117,12 +117,16 @@ def plot(arr: np.ndarray, xtitle: str, title: str, nbins: int) -> None:
     if nbins <= 0:
         raise ValueError("The number of bins you have inserted is invalid!")
     
-    plt.hist(arr,nbins,histtype='step',color="darkred",linewidth=2,label="Distribution")
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-    plt.xlabel(xtitle)
-    plt.ylabel("Counts")
-    plt.title(title)
+
+    _,ax = plt.subplots(figsize=(10,6))
+    
+    ax.hist(arr,nbins,histtype='step',color="darkred",linewidth=2,label="Distribution")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    ax.set_xlabel(xtitle)
+    ax.set_ylabel("Counts")
+    ax.set_title(title)
+    
     plt.tight_layout()
     plt.show()
 
