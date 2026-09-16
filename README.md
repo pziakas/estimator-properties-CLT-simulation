@@ -46,6 +46,7 @@ Key points that are validated:
 - **estimators.ipynb** - Estimator properties simulations, explanations and figures.
 - **CLT.ipynb** - CLT simulations, explanations and figures.
 - **stats_utils.py** - Module that contains modular, reusable functions for Monte Carlo experiments and plotting.
+- **test_stats_utils.py** - Module that contains unit tests for some methods of the stats_utils.py module.
 
 ## Skills Demonstrated
 
@@ -67,15 +68,22 @@ Key points that are validated:
 To run this project, the user needs to clone the repository and install the required libraries using the following command:
 
 ```bash
-pip install numpy matplotlib jupyter 
+pip install numpy matplotlib jupyter pytest
 ```
 
-Then, they can run the `estimators.ipynb` and `CLT.ipynb` notebooks with the following command:
+Before running the the jupyter notebooks, the user can test the module using the following command:
+```bash
+pytest
+```
+
+Then, if all tests are passed they can run the `estimators.ipynb` and `CLT.ipynb` notebooks with the following command:
 
 ```bash
 jupyter notebook estimators.ipynb
 jupyter notebook CLT.ipynb
 ```
+
+
 
 ## Statistical Properties of Estimators - Key results
 
